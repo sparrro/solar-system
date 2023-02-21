@@ -2,38 +2,54 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    outline: 1px solid red;
 }
 
 main {
     height: 100vh;
-    position: relative;
+    max-height: 100vh;
+    background-color: black;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     overflow: hidden;
 }
 
-
-
-.orbit-of-outer {
-    position: absolute;
-    width: 35vw;
-    height: 35vw;
-    border: 3px solid grey;
-    border-radius: 50%;
-    animation: orbit 20s linear infinite;
+.info {
+    background-color: blue;
+    width: 20vw;
 }
 
-.orbit-of-outer .orbit-reverser {
+
+.planets {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orbit-reverser {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 
-.outer {
-    height: 25%;
-    width: 25%;
-    background-color: purple;
+
+.orbit-of-neptune {
+    position: absolute;
+    width: 875px;
+    height: 875px;
+    border-radius: 50%;
+    animation: orbit 9822s linear infinite;
+}
+
+.orbit-of-neptune .orbit-reverser:has(.neptune:hover) {
+    animation: orbit 10804s linear infinite reverse;
+}
+
+.neptune {
+    height: 20px;
+    width: 20px;
+    background-color: rgb(44, 82, 255);
+    box-shadow: 0 0 2px 2px rgba(44, 83, 255, 0.5);
     border-radius: 50%;
     position: absolute;
     right: 0;
@@ -41,30 +57,24 @@ main {
     transform: translateX(50%) translateY(-50%);
 }
 
-.orbit-of-outer .orbit-reverser:has(.outer:hover) {
-    animation: orbit 23s linear infinite reverse;
-}
 
-
-
-.orbit-of-middle {
+.orbit-of-uranus {
     position: absolute;
-    width: 15vw;
-    height: 15vw;
-    border: 3px solid grey;
+    width: 750px;
+    height: 750px;
     border-radius: 50%;
-    animation: orbit 15s linear infinite;
+    animation: orbit 5022s linear infinite;
 }
 
-.orbit-of-middle .orbit-reverser {
-    width: 100%;
-    height: 100%;
+.orbit-of-uranus .orbit-reverser:has(.uranus:hover) {
+    animation: orbit 5524s linear infinite reverse;
 }
 
-.middle {
-    height: 25%;
-    width: 25%;
-    background-color: red;
+.uranus {
+    height: 20px;
+    width: 20px;
+    background-color: rgb(150, 204, 255);
+    box-shadow: 0 0 2px 2px rgb(150, 204, 255, 0.5);
     border-radius: 50%;
     position: absolute;
     right: 0;
@@ -72,31 +82,24 @@ main {
     transform: translateX(50%) translateY(-50%);
 }
 
-.orbit-of-middle .orbit-reverser:has(.middle:hover) {
-    animation: orbit 18s linear infinite reverse;
-}
 
-
-
-
-.orbit-of-inner {
+.orbit-of-saturn {
     position: absolute;
-    width: 5vw;
-    height: 5vw;
-    border: 3px solid grey;
+    width: 625px;
+    height: 625px;
     border-radius: 50%;
-    animation: orbit 10s linear infinite;
+    animation: orbit 1764s linear infinite;
 }
 
-.orbit-of-inner .orbit-reverser {
-    width: 100%;
-    height: 100%;
+.orbit-of-saturn .orbit-reverser:has(.saturn:hover) {
+    animation: orbit 1940s linear infinite reverse;
 }
 
-.inner {
-    height: 25%;
-    width: 25%;
-    background-color: lime;
+.saturn {
+    height: 39px;
+    width: 39px;
+    background-color: rgb(15, 248, 151);
+    box-shadow: 0 0 2px 2px rgb(15, 248, 151, 0.5);
     border-radius: 50%;
     position: absolute;
     right: 0;
@@ -104,8 +107,150 @@ main {
     transform: translateX(50%) translateY(-50%);
 }
 
-.orbit-of-inner .orbit-reverser:has(.inner:hover) {
-    animation: orbit 13s linear infinite reverse;
+.rings-of-saturn {
+    height: 2px;
+    width: 65px;
+    background-color: rgb(252, 255, 206);
+    border-radius: 50%;
+    position: absolute;
+    right: -13px;
+    top: 50%;
+    transform: rotate(-12deg);
+    animation: orbit 1764s linear infinite reverse;
+}
+
+
+.orbit-of-jupiter {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    animation: orbit 714s linear infinite;
+}
+
+.orbit-of-jupiter .orbit-reverser:has(.jupiter:hover) {
+    animation: orbit 785s linear infinite reverse;
+}
+
+.jupiter {
+    height: 45px;
+    width: 45px;
+    background-color: rgb(184, 150, 39);
+    box-shadow: 0 0 2px 2px rgb(184, 150, 39, 05);
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateX(50%) translateY(-50%);
+}
+
+
+.orbit-of-mars {
+    position: absolute;
+    width: 375px;
+    height: 375px;
+    border-radius: 50%;
+    animation: orbit 113s linear infinite;
+}
+
+.orbit-of-mars .orbit-reverser:has(.mars:hover) {
+    animation: orbit 124s linear infinite reverse;
+}
+
+.mars {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(223, 92, 40);
+    box-shadow: 0 0 2px 2px rgb(223, 92, 40, 0.5);
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateX(50%) translateY(-50%);
+}
+
+
+.orbit-of-earth {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    animation: orbit 60s linear infinite;
+}
+
+.orbit-of-earth .orbit-reverser:has(.earth:hover) {
+    animation: orbit 66s linear infinite reverse;
+}
+
+.earth {
+    height: 20px;
+    width: 20px;
+    background-color: rgb(44, 44, 204);
+    box-shadow: 0 0 2px 2px rgb(44, 44, 204, 0.5);
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateX(50%) translateY(-50%);
+}
+
+
+.orbit-of-venus {
+    position: absolute;
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    animation: orbit 36s linear infinite;
+}
+
+.orbit-of-venus .orbit-reverser:has(.venus:hover) {
+    animation: orbit 40s linear infinite reverse;
+}
+
+.venus {
+    height: 18px;
+    width: 18px;
+    background-color: rgb(219, 142, 26);
+    box-shadow: 0 0 2px 2px rgb(219, 142, 26, 0.5);
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateX(50%) translateY(-50%);
+}
+
+
+.orbit-of-mercury {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    animation: orbit 14.5s linear infinite;
+}
+
+.orbit-of-mercury .orbit-reverser:has(.mercury:hover) {
+    animation: orbit 15.95s linear infinite reverse;
+}
+
+.mercury {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(91, 151, 240);
+    box-shadow: 0 0 2px 2px rgb(91, 151, 240, 0.5);
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateX(50%) translateY(-50%);
+}
+
+
+.sun {
+    height: 60px;
+    width: 60px;
+    background-color: rgb(255, 243, 188);
+    box-shadow: 0 0 10px 5px orange;
+    border-radius: 50%;
 }
 
 @keyframes orbit {
