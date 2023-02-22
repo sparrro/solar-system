@@ -8,56 +8,67 @@
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-    <header></header>
+    <header>
+        <h1 class="latin-name">Solaris</h1>
+        <h2 class="swedish-name">Vårat solsystem</h2>
+    </header>
     <main>
         <section class="planets">
             <div class="orbit-of-neptune">
                 <div class="orbit-reverser">
-                    <aside class="neptune"></aside>
+                    <aside class="neptune" title="Neptunus" id="8"></aside>
                 </div>
             </div>
             <div class="orbit-of-uranus">
                 <div class="orbit-reverser">
-                    <aside class="uranus"></aside>
+                    <aside class="uranus" title="Uranus" id="7"></aside>
                 </div>
             </div>
             <div class="orbit-of-saturn">
                 <div class="orbit-reverser">
-                    <aside class="saturn">
-                        <aside class="rings-of-saturn"></aside>
+                    <aside class="saturn" title="Saturnus" id="6">
+                        <div class="rings-of-saturn"></div>
                     </aside>
                 </div>
             </div>
             <div class="orbit-of-jupiter">
                 <div class="orbit-reverser">
-                    <aside class="jupiter"></aside>
+                    <aside class="jupiter" title="Jupiter" id="5"></aside>
                 </div>
             </div>
             <div class="orbit-of-mars">
                 <div class="orbit-reverser">
-                    <aside class="mars"></aside>
+                    <aside class="mars" title="Mars" id="4"></aside>
                 </div>
             </div>
             <div class="orbit-of-earth">
                 <div class="orbit-reverser">
-                    <aside class="earth"></aside>
+                    <aside class="earth" title="Jorden" id="3"></aside>
                 </div>
             </div>
             <div class="orbit-of-venus">
                 <div class="orbit-reverser">
-                    <aside class="venus"></aside>
+                    <aside class="venus" title="Venus" id="2"></aside>
                 </div>
             </div>
             <div class="orbit-of-mercury">
                 <div class="orbit-reverser">
-                    <aside class="mercury"></aside>
+                    <aside class="mercury" title="Merkurius" id="1"></aside>
                 </div>
             </div>
-            <aside class="sun"></aside>
+            <aside class="sun" title="Solen" id="0"></aside>
         </section>
-        <aside class="info"></aside>
+        <aside class="info">
+            <h2>Klicka på eller sök efter en planet för att läsa mer om den</h2>
+            <input type="text" name="planet" id="planet-search">
+            <button type="button">Sök</button>
+            <article class="planet">
+                <h2 class="latin-name">Mars</h2>
+                <h2 class="swedish-name">Mars</h2>
+                <div class="mars-spinner"></div>
+            </article>
+        </aside>
     </main>
-    <footer></footer>
     <script src="../js/script.js"></script>
 </body>
 </html>
