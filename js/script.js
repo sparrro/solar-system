@@ -1,3 +1,112 @@
+const infoBox = document.querySelector('.info')
+const searchField = document.querySelector('.search-area input')
+const searchResults = document.querySelector('.search-area ul')
+let matchedPlanets = []
+
+function hide(element) {
+    element.classList.add('invisible')
+}
+function reveal(element) {
+    element.classList.remove('invisible')
+}
+async function getData() {
+    try {
+        let data = await fetch('https://majazocom.github.io/Data/solaris.json');
+        data = await data.json();
+        return data
+    } catch(err) {
+        alert(err)
+    }
+}
+
+//renderar infosidan
+async function renderInfoPage(planetObj) {
+    let planetData = await getData();
+    let planetInQuestion = planetData[planetObj.id]
+
+    let moons;
+    if (planetInQuestion.moons.length == 0){
+        moons = 'inga'
+    } else {
+        moons = planetInQuestion.moons.join(', ')
+    }
+
+    let orbitPlural;
+    if (planetInQuestion.orbitalPeriod == 1) {
+        orbitPlural = 'dag'
+    } else {
+        orbitPlural = 'dagar'
+    }
+
+    let rotationPlural;
+    if (planetInQuestion.rotation == 1) {
+        rotationPlural = 'dag'
+    } else {
+        rotationPlural = 'dagar'
+    }
+
+    let infoContent = `
+    <nav>
+        <button type="button" class="back-btn">Tillbaka till solsystemet</button>
+    </nav>
+    <button type="button" class="left-btn invisible" title="Förra sökresultatet">&leftarrow;</button>
+    <article class="planet">
+        <h2 class="latin-name">${planetInQuestion.latinName}</h2>
+        <h2 class="swedish-name">${planetInQuestion.name}</h2>
+        <aside class="${planetInQuestion.name}-spinner"></aside>
+        <p>
+            ${planetInQuestion.desc}
+        </p>
+        <ul>
+            <li>Omkrets: ${planetInQuestion.circumference}km</li>
+            <li>Avstånd från Solen: ${planetInQuestion.distance}km</li>
+            <li>Omloppsperiod: ${planetInQuestion.orbitalPeriod} ${orbitPlural}</li>
+            <li>Rotationsperiod: ${planetInQuestion.rotation} ${rotationPlural}</li>
+            <li>Högsta temperatur: ${planetInQuestion.temp.day}&deg;</li>
+            <li>Lägsta temperatur: ${planetInQuestion.temp.night}&deg;</li>
+            <li>Månar: ${moons}</li>
+        </ul>
+    </article>
+    <button type="button" class="right-btn invisible" title="Nästa sökresultat">&rightarrow;</button>
+    `
+    infoBox.innerHTML = infoContent;
+
+    //paginationsknapparna
+    const rightPage = document.querySelector('.right-btn');
+    const leftPage = document.querySelector('.left-btn');
+    let planetIndex = matchedPlanets.indexOf(planetObj);
+
+    rightPage.addEventListener('click', () => {
+        renderInfoPage(matchedPlanets[planetIndex+1])
+    })
+    leftPage.addEventListener('click', () => {
+        renderInfoPage(matchedPlanets[planetIndex-1])
+    })
+
+    let resultEls = document.querySelectorAll('.search-area li');
+
+    if (resultEls.length > 0) {
+        if (planetIndex > 0) {
+            reveal(leftPage)
+        }
+        if (planetIndex < resultEls.length-1) {
+            reveal(rightPage)
+        }
+    }
+
+    //bakåtknappen med nollställning av sökresultat
+    const backBtn = document.querySelector('.back-btn')
+    backBtn.addEventListener('click', () => {
+        infoBox.innerHTML = '';
+        searchResults.innerHTML = '';
+        searchField.value = ''
+        matchedPlanets = []
+        hide(infoBox)
+    })
+
+    reveal(infoBox);
+}
+
 //sätter slumpat startläge för omloppsbanorna
 function randomiseOrbits() {
     const orbitEls = document.querySelectorAll('.planets>div');
@@ -9,35 +118,13 @@ function randomiseOrbits() {
 //gör planeterna klickbara
 function addPlanetClicks() {
     const planetEls = document.querySelectorAll('.planets aside:not(aside>aside)');
-    console.log(planetEls);
-    planetEls.forEach(planetEl => planetEl.addEventListener('click', () => {testFunk(planetEl)}))
+    planetEls.forEach(planetEl => planetEl.addEventListener('click', () => {
+        matchedPlanets = []
+        renderInfoPage(planetEl)
+    }))
 }
 
-
-async function testFunk(planet) {
-    let planetData = await getData();
-    console.log(planetData[planet.id])
-}
-
-
-
-async function printPlanet(planet) {
-    let planetsData = await getData();
-    console.log(planetsData)
-}
-
-
-
-async function getData() {
-    try {
-        let data = await fetch('https://majazocom.github.io/Data/solaris.json');
-        data = await data.json();
-        return data
-    } catch(err) {
-    }
-}
-
-
+//renderar ut solsystemet
 async function renderSolarSystem() {
     let planets = await getData();
     planets.forEach(planet => {
@@ -70,26 +157,28 @@ async function renderSolarSystem() {
     addPlanetClicks();
 }
 
+//sökning
+searchField.addEventListener('keyup', async () => {
+    let planetData = await getData();
+    matchedPlanets = []
+    let searchTerm = searchField.value.toLowerCase();
+    planetData.forEach(planet => {
+        if (searchTerm != '' && planet.name.toLowerCase().includes(searchTerm) || searchTerm != '' && planet.latinName.toLowerCase().includes(searchTerm)) {
+            matchedPlanets.push(planet);
+        }
+    })
+    searchResults.innerHTML = ''
+    matchedPlanets.forEach(match => {
+        let searchResult = document.createElement('li');
+        searchResult.innerText = `${match.name}`;
+        searchResults.appendChild(searchResult)
+    })
+    let resultEls = Array.from(document.querySelectorAll('.search-area li')); //nodelist kunde visst inte ta indexOf()
+    resultEls.forEach(el => {
+        el.addEventListener('click', async () => {
+            renderInfoPage(matchedPlanets[resultEls.indexOf(el)]);
+        })
+    })
+})
+
 renderSolarSystem()
-
-
-
-
-
-
-
-
-
-
-
-
-
-async function printMars() {
-    let data = await getData();
-    let mars = data[4];
-    console.log(mars.desc)
-    console.log(mars)
-    console.log(`${mars.moons.length}: ${mars.moons.join(', ')}`)
-}
-
-//printMars()

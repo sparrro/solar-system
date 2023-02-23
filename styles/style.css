@@ -9,6 +9,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
@@ -22,30 +23,127 @@ header h1, header h2 {
 
 main {
     height: 100vh;
-    max-height: 100vh;
+    width: 100vw;
     background-color: black;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.search-area {
+    color: var(--mercyful-white);
+    height: 0;
+    width: 0;
+    overflow: visible;
+    font-size: 1.25rem;
+}
+
+.search-area p {
+    width: 12rem;
+    margin-top: 5rem;
+}
+
+.search-area input {
+    margin-top: 0.5rem;
+    box-shadow: 0 0 10px 3px var(--space-ice), 0 0 10px 5px var(--space-rust);
+}
+
+.search-area ul {
+    width: 10rem;
+    color: var(--mercyful-white);
+    margin-top: 1rem;
+    text-align: end;
+}
+
+.search-area li {
+    margin-bottom: 0.25rem;
+}
+
+.search-area li:hover {
+    cursor: pointer;
 }
 
 .info {
     background-color: black;
-    height: 100vh;
-    width: 24rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
     color: var(--mercyful-white);
-    padding: 2rem;
+    /*padding: 2rem;*/
+}
+
+.invisible {
+    display: none;
 }
 
 .info * {
     margin: 0.5rem;
 }
 
+.left-btn, .right-btn {
+    background-color: black;
+    color: var(--mercyful-white);
+    font-size: 42px;
+}
+
+.back-btn {
+    background-color: black;
+    color: var(--mercyful-white);
+    font-size: 22px;
+}
+
+.info button:hover {
+    cursor: pointer;
+}
+
+.planet {
+    margin: 10vw;
+    max-width: 40rem;
+    border: 3px solid var(--space-rust);
+    border-radius: 5px;
+}
+
+.planet aside {
+    margin: 5% auto 5% auto;
+}
+
+.planet p, .planet ul {
+    padding: 1rem;
+    border-top: 2px solid var(--space-rust);
+}
+
+.info nav {
+    width: 0;
+    overflow: visible;
+    align-self: flex-start;
+}
+
+
+
+.latin-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 42px;
+    color: var(--space-ice);
+}
+
+.swedish-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    color: var(--space-rust);
+}
+
 
 .planets {
-    margin: auto;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
+    height: 100vw;
+    max-height: 100vh;
+    max-width: 100vh;
     overflow: visible;
 }
 
@@ -53,6 +151,8 @@ main {
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    position: relative;
+    overflow: visible;
 }
 
 .orbit-reverser:has(aside:hover) {
@@ -66,8 +166,8 @@ main {
 
 .orbit-of-Neptunus {
     position: absolute;
-    width: 51vw;
-    height: 51vw;
+    width: 90%;
+    height: 90%;
     animation: orbit 9822s linear infinite;
     overflow: visible;
     border-radius: 50%;
@@ -78,8 +178,8 @@ main {
 }
 
 .Neptunus {
-    height: 1vw;
-    width: 1vw;
+    height: 1.6%;
+    width: 1.6%;
     background-color: rgb(44, 82, 255);
     box-shadow: 0 0 2px 2px rgba(44, 83, 255, 0.5);
     border-radius: 50%;
@@ -92,8 +192,8 @@ main {
 
 .orbit-of-Uranus {
     position: absolute;
-    width: 43vw;
-    height: 43vw;
+    width: 75%;
+    height: 75%;
     animation: orbit 5022s linear infinite;
     overflow: visible;
     border-radius: 50%;
@@ -104,8 +204,8 @@ main {
 }
 
 .Uranus {
-    height: 1vw;
-    width: 1vw;
+    height: 2.1%;
+    width: 2.1%;
     background-color: rgb(150, 204, 255);
     box-shadow: 0 0 2px 2px rgb(150, 204, 255, 0.5);
     border-radius: 50%;
@@ -118,8 +218,8 @@ main {
 
 .orbit-of-Saturnus {
     position: absolute;
-    width: 35vw;
-    height: 35vw;
+    width: 55%;
+    height: 55%;
     animation: orbit 1764s linear infinite;
     overflow: visible;
     border-radius: 50%;
@@ -130,12 +230,14 @@ main {
 }
 
 .Saturnus {
-    height: 2vw;
-    width: 2vw;
+    height: 5.6%;
+    width: 5.6%;
     background-color: rgb(15, 248, 151);
     box-shadow: 0 0 2px 2px rgb(15, 248, 151, 0.5);
     border-radius: 50%;
     position: absolute;
+    display: grid;
+    place-items: center;
     right: 0;
     top: 50%;
     transform: translateX(50%) translateY(-50%);
@@ -143,13 +245,10 @@ main {
 }
 
 .rings-of-saturn {
-    height: 4px;
-    width: 4vw;
+    height: 20%;
+    width: 210%;
     background-color: rgb(252, 255, 206);
     border-radius: 50%;
-    position: absolute;
-    left: -50%;
-    top: 50%;
     transform: rotate(-12deg);
     animation: orbit 1764s linear infinite reverse;
 }
@@ -157,8 +256,8 @@ main {
 
 .orbit-of-Jupiter {
     position: absolute;
-    width: 27vw;
-    height: 27vw;
+    width: 40%;
+    height: 40%;
     animation: orbit 714s linear infinite;
     overflow: visible;
     border-radius: 50%;
@@ -169,8 +268,8 @@ main {
 }
 
 .Jupiter {
-    height: 2.5vw;
-    width: 2.5vw;
+    height: 8.4%;
+    width: 8.4%;
     background-color: rgb(184, 150, 39);
     box-shadow: 0 0 2px 2px rgb(184, 150, 39, 05);
     border-radius: 50%;
@@ -183,8 +282,8 @@ main {
 
 .orbit-of-Mars {
     position: absolute;
-    width: 19vw;
-    height: 19vw;
+    width: 30%;
+    height: 30%;
     animation: orbit 113s linear infinite;
     overflow: visible;
     border-radius: 50%;
@@ -195,8 +294,8 @@ main {
 }
 
 .Mars {
-    height: 0.6vw;
-    width: 0.6vw;
+    height: 2.8%;
+    width: 2.8%;
     background-color: rgb(223, 92, 40);
     box-shadow: 0 0 2px 2px rgb(223, 92, 40, 0.5);
     border-radius: 50%;
@@ -209,8 +308,8 @@ main {
 
 .orbit-of-Jorden {
     position: absolute;
-    width: 15.4vw;
-    height: 15.4vw;
+    width: 24%;
+    height: 24%;
     animation: orbit 60s linear infinite;
     overflow: visible;
     border-radius: 50%;
@@ -221,8 +320,8 @@ main {
 }
 
 .Jorden {
-    height: 0.8vw;
-    width: 0.8vw;
+    height: 5.6%;
+    width: 5.6%;
     background-color: rgb(44, 44, 204);
     box-shadow: 0 0 2px 2px rgb(44, 44, 204, 0.5);
     border-radius: 50%;
@@ -235,8 +334,8 @@ main {
 
 .orbit-of-Venus {
     position: absolute;
-    width: 11.6vw;
-    height: 11.6vw;
+    width: 16%;
+    height: 16%;
     animation: orbit 36s linear infinite;
     overflow: visible;
     border-radius: 50%;
@@ -247,8 +346,8 @@ main {
 }
 
 .Venus {
-    height: 0.8vw;
-    width: 0.8vw;
+    height: 7%;
+    width: 7%;
     background-color: rgb(219, 142, 26);
     box-shadow: 0 0 2px 2px rgb(219, 142, 26, 0.5);
     border-radius: 50%;
@@ -261,8 +360,8 @@ main {
 
 .orbit-of-Merkurius {
     position: absolute;
-    width: 8vw;
-    height: 8vw;
+    width: 10.5%;
+    height: 10.5%;
     animation: orbit 14.5s linear infinite;
     overflow: visible;
     border-radius: 50%;
@@ -273,8 +372,8 @@ main {
 }
 
 .Merkurius {
-    height: 0.5vw;
-    width: 0.5vw;
+    height: 7%;
+    width: 7%;
     background-color: rgb(91, 151, 240);
     box-shadow: 0 0 2px 2px rgb(91, 151, 240, 0.5);
     border-radius: 50%;
@@ -286,8 +385,8 @@ main {
 
 
 .Solen {
-    height: 4vw;
-    width: 4vw;
+    height: 5%;
+    width: 5%;
     background-color: rgb(255, 243, 188);
     box-shadow: 0 0 10px 5px orange;
     border-radius: 50%;
@@ -296,25 +395,7 @@ main {
 
 
 
-.planet {
-    margin-top: 7rem;
-    border: 3px solid var(--space-rust);
-    border-radius: 5px;
-}
 
-.planet aside {
-    margin: auto;
-}
-
-.latin-name {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--space-ice);
-}
-
-.swedish-name {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--space-rust);
-}
 
 .Neptunus-spinner {
     background-image: url('./imgs/Solarsystemscope_texture_2k_neptune.jpg');
@@ -416,7 +497,6 @@ main {
 }
 
 @keyframes orbit {
-    from {rotate: 0deg;}
     to {rotate: 360deg;}
 }
 
