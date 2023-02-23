@@ -1,3 +1,9 @@
+:root {
+    --mercyful-white: #ddd;
+    --space-rust: #cd7f32;
+    --space-ice: #406E94;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +17,6 @@ header {
 }
 
 header h1, header h2 {
-    color: white;
     transform: translate(2rem, 2rem);
 }
 
@@ -24,10 +29,10 @@ main {
 }
 
 .info {
-    background-image: linear-gradient(to right, black, rgb(0, 0, 10));
+    background-color: black;
     height: 100vh;
     width: 24rem;
-    color: white;
+    color: var(--mercyful-white);
     padding: 2rem;
 }
 
@@ -59,22 +64,22 @@ main {
 }
 
 
-.orbit-of-neptune {
+.orbit-of-Neptunus {
     position: absolute;
-    width: 875px;
-    height: 875px;
+    width: 51vw;
+    height: 51vw;
     animation: orbit 9822s linear infinite;
     overflow: visible;
     border-radius: 50%;
 }
 
-.orbit-of-neptune .orbit-reverser:has(.neptune:hover) {
+.orbit-of-Neptunus .orbit-reverser:has(.Neptunus:hover) {
     animation: orbit 10804s linear infinite reverse;
 }
 
-.neptune {
-    height: 20px;
-    width: 20px;
+.Neptunus {
+    height: 1vw;
+    width: 1vw;
     background-color: rgb(44, 82, 255);
     box-shadow: 0 0 2px 2px rgba(44, 83, 255, 0.5);
     border-radius: 50%;
@@ -85,22 +90,22 @@ main {
 }
 
 
-.orbit-of-uranus {
+.orbit-of-Uranus {
     position: absolute;
-    width: 750px;
-    height: 750px;
+    width: 43vw;
+    height: 43vw;
     animation: orbit 5022s linear infinite;
     overflow: visible;
     border-radius: 50%;
 }
 
-.orbit-of-uranus .orbit-reverser:has(.uranus:hover) {
+.orbit-of-Uranus .orbit-reverser:has(.Uranus:hover) {
     animation: orbit 5524s linear infinite reverse;
 }
 
-.uranus {
-    height: 20px;
-    width: 20px;
+.Uranus {
+    height: 1vw;
+    width: 1vw;
     background-color: rgb(150, 204, 255);
     box-shadow: 0 0 2px 2px rgb(150, 204, 255, 0.5);
     border-radius: 50%;
@@ -111,22 +116,22 @@ main {
 }
 
 
-.orbit-of-saturn {
+.orbit-of-Saturnus {
     position: absolute;
-    width: 625px;
-    height: 625px;
+    width: 35vw;
+    height: 35vw;
     animation: orbit 1764s linear infinite;
     overflow: visible;
     border-radius: 50%;
 }
 
-.orbit-of-saturn .orbit-reverser:has(.saturn:hover) {
+.orbit-of-Saturnus .orbit-reverser:has(.Saturnus:hover) {
     animation: orbit 1940s linear infinite reverse;
 }
 
-.saturn {
-    height: 39px;
-    width: 39px;
+.Saturnus {
+    height: 2vw;
+    width: 2vw;
     background-color: rgb(15, 248, 151);
     box-shadow: 0 0 2px 2px rgb(15, 248, 151, 0.5);
     border-radius: 50%;
@@ -138,34 +143,34 @@ main {
 }
 
 .rings-of-saturn {
-    height: 2px;
-    width: 65px;
+    height: 4px;
+    width: 4vw;
     background-color: rgb(252, 255, 206);
     border-radius: 50%;
     position: absolute;
-    right: -13px;
+    left: -50%;
     top: 50%;
     transform: rotate(-12deg);
     animation: orbit 1764s linear infinite reverse;
 }
 
 
-.orbit-of-jupiter {
+.orbit-of-Jupiter {
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 27vw;
+    height: 27vw;
     animation: orbit 714s linear infinite;
     overflow: visible;
     border-radius: 50%;
 }
 
-.orbit-of-jupiter .orbit-reverser:has(.jupiter:hover) {
+.orbit-of-Jupiter .orbit-reverser:has(.Jupiter:hover) {
     animation: orbit 785s linear infinite reverse;
 }
 
-.jupiter {
-    height: 45px;
-    width: 45px;
+.Jupiter {
+    height: 2.5vw;
+    width: 2.5vw;
     background-color: rgb(184, 150, 39);
     box-shadow: 0 0 2px 2px rgb(184, 150, 39, 05);
     border-radius: 50%;
@@ -176,22 +181,22 @@ main {
 }
 
 
-.orbit-of-mars {
+.orbit-of-Mars {
     position: absolute;
-    width: 375px;
-    height: 375px;
+    width: 19vw;
+    height: 19vw;
     animation: orbit 113s linear infinite;
     overflow: visible;
     border-radius: 50%;
 }
 
-.orbit-of-mars .orbit-reverser:has(.mars:hover) {
+.orbit-of-Mars .orbit-reverser:has(.Mars:hover) {
     animation: orbit 124s linear infinite reverse;
 }
 
-.mars {
-    height: 10px;
-    width: 10px;
+.Mars {
+    height: 0.6vw;
+    width: 0.6vw;
     background-color: rgb(223, 92, 40);
     box-shadow: 0 0 2px 2px rgb(223, 92, 40, 0.5);
     border-radius: 50%;
@@ -202,22 +207,22 @@ main {
 }
 
 
-.orbit-of-earth {
+.orbit-of-Jorden {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 15.4vw;
+    height: 15.4vw;
     animation: orbit 60s linear infinite;
     overflow: visible;
     border-radius: 50%;
 }
 
-.orbit-of-earth .orbit-reverser:has(.earth:hover) {
+.orbit-of-Jorden .orbit-reverser:has(.Jorden:hover) {
     animation: orbit 66s linear infinite reverse;
 }
 
-.earth {
-    height: 20px;
-    width: 20px;
+.Jorden {
+    height: 0.8vw;
+    width: 0.8vw;
     background-color: rgb(44, 44, 204);
     box-shadow: 0 0 2px 2px rgb(44, 44, 204, 0.5);
     border-radius: 50%;
@@ -228,22 +233,22 @@ main {
 }
 
 
-.orbit-of-venus {
+.orbit-of-Venus {
     position: absolute;
-    width: 225px;
-    height: 225px;
+    width: 11.6vw;
+    height: 11.6vw;
     animation: orbit 36s linear infinite;
     overflow: visible;
     border-radius: 50%;
 }
 
-.orbit-of-venus .orbit-reverser:has(.venus:hover) {
+.orbit-of-Venus .orbit-reverser:has(.Venus:hover) {
     animation: orbit 40s linear infinite reverse;
 }
 
-.venus {
-    height: 18px;
-    width: 18px;
+.Venus {
+    height: 0.8vw;
+    width: 0.8vw;
     background-color: rgb(219, 142, 26);
     box-shadow: 0 0 2px 2px rgb(219, 142, 26, 0.5);
     border-radius: 50%;
@@ -254,22 +259,22 @@ main {
 }
 
 
-.orbit-of-mercury {
+.orbit-of-Merkurius {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 8vw;
+    height: 8vw;
     animation: orbit 14.5s linear infinite;
     overflow: visible;
     border-radius: 50%;
 }
 
-.orbit-of-mercury .orbit-reverser:has(.mercury:hover) {
+.orbit-of-Merkurius .orbit-reverser:has(.Merkurius:hover) {
     animation: orbit 15.95s linear infinite reverse;
 }
 
-.mercury {
-    height: 10px;
-    width: 10px;
+.Merkurius {
+    height: 0.5vw;
+    width: 0.5vw;
     background-color: rgb(91, 151, 240);
     box-shadow: 0 0 2px 2px rgb(91, 151, 240, 0.5);
     border-radius: 50%;
@@ -280,9 +285,9 @@ main {
 }
 
 
-.sun {
-    height: 60px;
-    width: 60px;
+.Solen {
+    height: 4vw;
+    width: 4vw;
     background-color: rgb(255, 243, 188);
     box-shadow: 0 0 10px 5px orange;
     border-radius: 50%;
@@ -291,17 +296,123 @@ main {
 
 
 
-article {
+.planet {
+    margin-top: 7rem;
+    border: 3px solid var(--space-rust);
+    border-radius: 5px;
 }
 
-.mars-spinner {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/46/Solarsystemscope_texture_2k_mars.jpg');
+.planet aside {
+    margin: auto;
+}
+
+.latin-name {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--space-ice);
+}
+
+.swedish-name {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--space-rust);
+}
+
+.Neptunus-spinner {
+    background-image: url('./imgs/Solarsystemscope_texture_2k_neptune.jpg');
     background-repeat: repeat;
     background-size: auto 100%;
+    box-shadow: 0 0 10px 1px white;
     height: 15rem;
     width: 15rem;
     border-radius: 50%;
-    animation: planet-spin 10s linear infinite;
+    animation: planet-spin 3.3s linear infinite;
+}
+
+.Uranus-spinner {
+    background-image: url('./imgs/Solarsystemscope_texture_2k_uranus.jpg');
+    background-repeat: repeat;
+    background-size: auto 100%;
+    box-shadow: 0 0 10px 1px white;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    animation: planet-spin 3.6s linear infinite reverse;
+}
+
+.Saturnus-spinner {
+    background-image: url('./imgs/Solarsystemscope_texture_2k_saturn.jpg');
+    background-repeat: repeat;
+    background-size: auto 100%;
+    box-shadow: 0 0 10px 1px white;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    animation: planet-spin 2.2s linear infinite;
+}
+
+.Jupiter-spinner {
+    background-image: url('./imgs/Jupiter_Cylindrical_Map_-_Dec_2000_PIA07782.jpg');
+    background-repeat: repeat;
+    background-size: auto 100%;
+    box-shadow: 0 0 10px 1px white;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    animation: planet-spin 2.1s linear infinite;
+}
+
+.Mars-spinner {
+    background-image: url('./imgs/Solarsystemscope_texture_2k_mars.jpg');
+    background-repeat: repeat;
+    background-size: auto 100%;
+    box-shadow: 0 0 10px 1px white;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    animation: planet-spin 5s linear infinite;
+}
+
+.Jorden-spinner {
+    background-image: url('./imgs/Solarsystemscope_texture_8k_earth_daymap.jpg');
+    background-repeat: repeat;
+    background-size: auto 100%;
+    box-shadow: 0 0 10px 1px white;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    animation: planet-spin 5s linear infinite;
+}
+
+.Venus-spinner {
+    background-image: url('./imgs/Solarsystemscope_texture_8k_venus_surface.jpg');
+    background-repeat: repeat;
+    background-size: auto 100%;
+    box-shadow: 0 0 10px 1px white;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    animation: planet-spin 48s linear infinite reverse;
+}
+
+.Merkurius-spinner {
+    background-image: url('./imgs/Solarsystemscope_texture_2k_mercury.jpg');
+    background-repeat: repeat;
+    background-size: auto 100%;
+    box-shadow: 0 0 10px 1px white;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    animation: planet-spin 12s linear infinite;
+}
+
+.Solen-spinner {
+    background-image: url('./imgs/Map_of_the_full_sun.jpg');
+    background-repeat: repeat;
+    background-size: auto 100%;
+    box-shadow: 0 0 10px 5px orange;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    animation: planet-spin 125s linear infinite;
 }
 
 @keyframes orbit {
@@ -310,5 +421,5 @@ article {
 }
 
 @keyframes planet-spin {
-    to {background-position: 200% 0;}
+    to {background-position: -200% 0;}
 }
