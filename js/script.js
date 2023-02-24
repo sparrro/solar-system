@@ -62,8 +62,8 @@ async function renderInfoPage(planetObj) {
             <li>Avstånd från Solen: ${planetInQuestion.distance}km</li>
             <li>Omloppsperiod: ${planetInQuestion.orbitalPeriod} ${orbitPlural}</li>
             <li>Rotationsperiod: ${planetInQuestion.rotation} ${rotationPlural}</li>
-            <li>Högsta temperatur: ${planetInQuestion.temp.day}&deg;</li>
-            <li>Lägsta temperatur: ${planetInQuestion.temp.night}&deg;</li>
+            <li>Genomsnittlig temperatur dagtid: ${planetInQuestion.temp.day}&deg;</li>
+            <li>Genomsnittlig temperatur nattetid: ${planetInQuestion.temp.night}&deg;</li>
             <li>Månar: ${moons}</li>
         </ul>
     </article>
