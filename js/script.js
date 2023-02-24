@@ -139,6 +139,9 @@ async function renderSolarSystem() {
             planetEl.classList.add(`orbit-of-${planet.name}`);
             let reverseOrbitEl = document.createElement('div');
             reverseOrbitEl.classList.add('orbit-reverser');
+            searchField.addEventListener('keydown', e => {
+            if (e.key == 'Enter') {
+            window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')}})
             let planetProperEl = document.createElement('aside');
             planetProperEl.classList.add(planet.name);
             planetProperEl.title = planet.name;
