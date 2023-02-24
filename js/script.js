@@ -1,49 +1,51 @@
-const infoBox = document.querySelector('.info')
-const searchField = document.querySelector('.search-area input')
-const searchResults = document.querySelector('.search-area ul')
-let matchedPlanets = []
+const infoBox = document.querySelector('.info');
+const searchField = document.querySelector('.search-area input');
+const searchResults = document.querySelector('.search-area ul');
+let matchedPlanets = [];
 
 function hide(element) {
-    element.classList.add('invisible')
-}
+    element.classList.add('invisible');
+};
 function reveal(element) {
-    element.classList.remove('invisible')
-}
+    element.classList.remove('invisible');
+};
 async function getData() {
     try {
         let data = await fetch('https://majazocom.github.io/Data/solaris.json');
         data = await data.json();
-        return data
+        return data;
     } catch(err) {
-        alert(err)
-    }
-}
+        alert(`Något gick visst fel: ${err}`);
+    };
+};
+
+
 
 //renderar infosidan
 async function renderInfoPage(planetObj) {
     let planetData = await getData();
-    let planetInQuestion = planetData[planetObj.id]
+    let planetInQuestion = planetData[planetObj.id];
 
     let moons;
     if (planetInQuestion.moons.length == 0){
-        moons = 'inga'
+        moons = 'inga';
     } else {
-        moons = planetInQuestion.moons.join(', ')
-    }
+        moons = planetInQuestion.moons.join(', ');
+    };
 
     let orbitPlural;
     if (planetInQuestion.orbitalPeriod == 1) {
-        orbitPlural = 'dag'
+        orbitPlural = 'dag';
     } else {
-        orbitPlural = 'dagar'
-    }
+        orbitPlural = 'dagar';
+    };
 
     let rotationPlural;
     if (planetInQuestion.rotation == 1) {
-        rotationPlural = 'dag'
+        rotationPlural = 'dag';
     } else {
-        rotationPlural = 'dagar'
-    }
+        rotationPlural = 'dagar';
+    };
 
     let infoContent = `
     <nav>
@@ -68,7 +70,7 @@ async function renderInfoPage(planetObj) {
         </ul>
     </article>
     <button type="button" class="right-btn invisible" title="Nästa sökresultat">&rightarrow;</button>
-    `
+    `;
     infoBox.innerHTML = infoContent;
 
     //paginationsknapparna
@@ -77,52 +79,52 @@ async function renderInfoPage(planetObj) {
     let planetIndex = matchedPlanets.indexOf(planetObj);
 
     rightPage.addEventListener('click', () => {
-        renderInfoPage(matchedPlanets[planetIndex+1])
-    })
+        renderInfoPage(matchedPlanets[planetIndex+1]);
+    });
     leftPage.addEventListener('click', () => {
-        renderInfoPage(matchedPlanets[planetIndex-1])
-    })
+        renderInfoPage(matchedPlanets[planetIndex-1]);
+    });
 
     let resultEls = document.querySelectorAll('.search-area li');
 
     if (resultEls.length > 0) {
         if (planetIndex > 0) {
-            reveal(leftPage)
-        }
-        if (planetIndex < resultEls.length-1) {
-            reveal(rightPage)
-        }
-    }
+            reveal(leftPage);
+        };
+        if (planetIndex < resultEls.length-1 && planetIndex != -1) {
+            reveal(rightPage);
+        };
+    };
 
     //bakåtknappen med nollställning av sökresultat
-    const backBtn = document.querySelector('.back-btn')
+    const backBtn = document.querySelector('.back-btn');
     backBtn.addEventListener('click', () => {
         infoBox.innerHTML = '';
         searchResults.innerHTML = '';
-        searchField.value = ''
-        matchedPlanets = []
-        hide(infoBox)
-    })
+        searchField.value = '';
+        matchedPlanets = [];
+        hide(infoBox);
+    });
 
     reveal(infoBox);
-}
+};
 
 //sätter slumpat startläge för omloppsbanorna
 function randomiseOrbits() {
     const orbitEls = document.querySelectorAll('.planets>div');
-    const randomOrbitDelay = Math.random()*-1000000
-    orbitEls.forEach(orbit => orbit.style.animationDelay = `${randomOrbitDelay}s`)
-    document.querySelector('.rings-of-saturn').style.animationDelay = `${randomOrbitDelay}s`
-}
+    const randomOrbitDelay = Math.random()*-1000000;
+    orbitEls.forEach(orbit => orbit.style.animationDelay = `${randomOrbitDelay}s`);
+    document.querySelector('.rings-of-saturn').style.animationDelay = `${randomOrbitDelay}s`;
+};
 
 //gör planeterna klickbara
 function addPlanetClicks() {
     const planetEls = document.querySelectorAll('.planets aside:not(aside>aside)');
     planetEls.forEach(planetEl => planetEl.addEventListener('click', () => {
-        matchedPlanets = []
-        renderInfoPage(planetEl)
-    }))
-}
+        matchedPlanets = [];
+        renderInfoPage(planetEl);
+    }));
+};
 
 //renderar ut solsystemet
 async function renderSolarSystem() {
@@ -141,7 +143,7 @@ async function renderSolarSystem() {
             reverseOrbitEl.classList.add('orbit-reverser');
             searchField.addEventListener('keydown', e => {
             if (e.key == 'Enter') {
-            window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')}})
+            window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')}});
             let planetProperEl = document.createElement('aside');
             planetProperEl.classList.add(planet.name);
             planetProperEl.title = planet.name;
@@ -149,39 +151,39 @@ async function renderSolarSystem() {
             if (planet.id == 6) {
                 let ringsEl = document.createElement('aside');
                 ringsEl.classList.add('rings-of-saturn');
-                planetProperEl.appendChild(ringsEl)
+                planetProperEl.appendChild(ringsEl);
             };
             reverseOrbitEl.appendChild(planetProperEl);
             planetEl.appendChild(reverseOrbitEl);
-        }
+        };
         document.querySelector('.planets').insertAdjacentElement('afterbegin', planetEl);
     });
     randomiseOrbits();
     addPlanetClicks();
-}
+};
 
 //sökning
 searchField.addEventListener('keyup', async () => {
     let planetData = await getData();
-    matchedPlanets = []
+    matchedPlanets = [];
     let searchTerm = searchField.value.toLowerCase();
     planetData.forEach(planet => {
         if (searchTerm != '' && planet.name.toLowerCase().includes(searchTerm) || searchTerm != '' && planet.latinName.toLowerCase().includes(searchTerm)) {
             matchedPlanets.push(planet);
-        }
-    })
-    searchResults.innerHTML = ''
+        };
+    });
+    searchResults.innerHTML = '';
     matchedPlanets.forEach(match => {
         let searchResult = document.createElement('li');
         searchResult.innerText = `${match.name}`;
-        searchResults.appendChild(searchResult)
-    })
+        searchResults.appendChild(searchResult);
+    });
     let resultEls = Array.from(document.querySelectorAll('.search-area li')); //nodelist kunde visst inte ta indexOf()
     resultEls.forEach(el => {
         el.addEventListener('click', async () => {
             renderInfoPage(matchedPlanets[resultEls.indexOf(el)]);
-        })
-    })
-})
+        });
+    });
+});
 
-renderSolarSystem()
+renderSolarSystem();
